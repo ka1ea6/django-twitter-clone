@@ -18,7 +18,16 @@ config = dotenv_values(".env")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+TEMPLATE_DIR = BASE_DIR / "templates"
 
+
+# Tailwind settings
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+TAILWIND_APP_NAME = 'theme'
+
+INTERNAL_IPS = [
+    '127.0.0.1'
+]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -41,7 +50,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core'
+    'tailwind',
+    'theme',
+    'django_browser_reload',
+    'core',
+
 ]
 
 MIDDLEWARE = [
@@ -52,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'twitter_clone.urls'
@@ -59,7 +73,7 @@ ROOT_URLCONF = 'twitter_clone.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
