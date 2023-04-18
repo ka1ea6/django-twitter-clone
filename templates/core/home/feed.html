@@ -9,8 +9,9 @@
         <div class="flex flex-row border border-[#606060e8] p-4 ">
             <img src="{% static 'icons/profile.png' %}" width="50" height="50" class="rounded-full h-fit self-start"/>
             <div class="flex flex-col pl-2 w-full">
-                <form action="" class="flex flex-col">
-                    <input type="text" name="tweet" id="" class="bg-[#5d5d5d00] border-none  focus:outline-0 w-full" placeholder="What's hapening?">
+                <form action="/post" method="POST" class="flex flex-col">
+                    {% csrf_token %}
+                    <input type="text" name="content" id="" class="bg-[#5d5d5d00] border-none  focus:outline-0 w-full" placeholder="What's hapening?">
                     <!-- <hr class="self-center w-full h-1/4 my-4 border-0.5 border-[#1DA1F2]" /> -->
                     <button type="submit" class="self-end mt-4 bg-[#1DA1F2] rounded-full px-4 py-2">Tweet</button>
                 </form>
