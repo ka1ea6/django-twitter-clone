@@ -1,0 +1,16 @@
+{% extends '../base.html' %} 
+{% block title %} 
+Twitter Clone 
+{% endblock title %}
+{% block content %} 
+<div class="grid grid-cols-12 w-screen h-screen">
+  <div class="col-span-4">
+    {% include '../sidebar.html' %} 
+  </div>
+  <div class="col-span-8">
+    {% include './main.html' %} 
+  </div>
+
+</div>
+{% endblock content %}  
+  

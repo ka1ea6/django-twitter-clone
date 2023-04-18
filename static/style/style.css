@@ -1,0 +1,8 @@
+body::-webkit-scrollbar{
+  display: none;
+}
+ul,
+li {
+  list-style-type: none;
+  /* color: #14171ae9 */
+}

@@ -1,0 +1,131 @@
+{% load static %}
+<div
+  class="flex flex-col justify-start items-end h-screen w-full h-full "
+>
+  <div
+    class="w-1/2 h-full  flex flex-col justify-between items-end p-10"
+  >
+    <div class="">
+      <img
+        src="{% static 'icons/white-twitter-50.png' %}"
+        height="30"
+        width="30"
+        class="mb-10 mx-4"
+      />
+      <ul class="sidebar__list">
+        <!-- <li class="my-2 sidebar__item">
+          <a
+            href="#"
+            class="flex justify-between hover:bg-[#5f5c5cc6] px-7 py-2 rounded-full w-fit sidebar__item__link"
+          >
+            <img
+              src="{% static 'icons/white-home-50.png' %}"
+              height="30"
+              width="30"
+              class="sidebar__item__img"
+            />
+            <span class="text-lg font-bold mx-4 sidebar__item__title"
+              >Home</span
+            >
+          </a>
+        </li> -->
+      </ul>
+      <form>
+        <button
+          type="submit"
+          class="w-full bg-[#1DA1F2] text-center px-4 py-2 rounded-full text-[#fff] text-lg font-bold"
+        >
+          Tweet
+        </button>
+      </form>
+    </div>
+    <div class="self-start">Profile</div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    const sidebarItems = [
+      {
+        img: "{% static 'icons/black-home-50.png' %}",
+        href: "#",
+        display: "Home",
+      },
+      {
+        img: "{% static 'icons/white-hashtag-50.png' %}",
+        href: "#",
+        display: "Explore",
+      },
+      {
+        img: "{% static 'icons/black-notification-50.png' %}",
+        href: "#",
+        display: "Notifications",
+      },
+      {
+        img: "{% static 'icons/black-envelope-50.png' %}",
+        href: "#",
+        display: "Messages",
+      },
+      {
+        img: "{% static 'icons/black-bookmark-50.png' %}",
+        href: "#",
+        display: "Bookmarks",
+      },
+      {
+        img: "{% static 'icons/black-customer-50.png' %}",
+        href: "#",
+        display: "Profile",
+      },
+      {
+        img: "{% static 'icons/black-ellipsis-50.png' %}",
+        href: "#",
+        display: "More",
+      },
+    ];
+    const sidebarList = document.querySelector(".sidebar__list");
+
+    for (let item of sidebarItems) {
+      console.log(item);
+      // Creating list item
+      const listItem = document.createElement("li");
+      listItem.classList.add("my-2");
+
+      //   Creating Link
+      const itemLink = document.createElement("a");
+      itemLink.href = item.href;
+      itemLink.classList.add(
+        "flex",
+        "justify-between",
+        "hover:bg-[#5f5c5cc6]",
+        "px-7",
+        "py-2",
+        "rounded-full",
+        "w-fit"
+      );
+      //   Creating image
+      // <img
+      //           src="{% static 'icons/white-home-50.png' %}"
+      //           height="30"
+      //           width="30"
+      //           class="sidebar__item__img"
+      //         />
+
+      const itemImage = document.createElement("img");
+      itemImage.src = item.img;
+      itemImage.width = 30;
+      itemImage.width = 30;
+      // Creating title span
+      const itemTitle = document.createElement("span");
+      itemTitle.classList.add("text-xl", "font-medium","mx-4");
+      itemTitle.textContent = item.display;
+
+      //   append link to list
+
+      itemLink.insertAdjacentElement("beforeend", itemImage);
+      itemLink.insertAdjacentElement("beforeend", itemTitle);
+      listItem.insertAdjacentElement("beforeend", itemLink);
+
+      sidebarList.insertAdjacentElement("beforeend", listItem);
+    }
+  });
+</script>

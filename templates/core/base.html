@@ -1,0 +1,31 @@
+{% load static tailwind_tags %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'icons/black-twitter-50.png' %}"
+      type="image/x-icon"
+    />
+    <script
+      type="text/javascript"
+      src="{% static 'js/jquery-3.6.4.js' %}"
+    ></script>
+    <link rel="stylesheet" href="{% static 'style/style.css' %}" />
+    <title>{% block title %}{% endblock title %}</title>
+    {% tailwind_css %}
+    <style>
+      ::-webkit-scrollbar{
+    display: none;
+  }
+    </style>
+  </head>
+  <body>
+    <div class="bg-[#000] text-[#fff] h-screen fixed">
+      {% block content %} {% endblock content %}
+    </div>
+  </body>
+</html>
