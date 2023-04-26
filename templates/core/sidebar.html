@@ -39,9 +39,58 @@
         </button>
       </form>
     </div>
-    <div class="self-start">Profile</div>
+    <div class="self-start flex gap-4  hover:bg-[#252b30b9] p-2 rounded-full w-full relative dropdown">
+      <img src="{% static 'icons/profile.png' %}" width="50" height="50" class="rounded-full h-fit self-start"/>
+      <div class="flex flex-col">
+        <span>Kalb</span>
+        <span>@kalb</span>
+      </div>
+      <div class="self-start">
+        <!-- <img src="{% static 'icons/grey-ellipsis-50.png' %}" width="20" height="20" class="rounded-full h-fit self-start"/> -->
+      </div>
+      <div class="dropdown-content hidden " >
+        <a href="logout" class=" ">Logout @kalb</a>
+      </div>
+    </div>
   </div>
 </div>
+
+<style>
+  /* .dropdown {
+  display: inline-block;
+  position: relative;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  transform: translateY(-30px);
+  background-color: white;
+  color:black;
+  width: 100%;
+  overflow: auto;
+  box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+} */
+.hidden {
+  display: none;
+}
+.dropdown-content-show {
+  position: absolute;
+  transform: translateY(-50px);
+  background-color: #000;
+  color: #fff;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #fff
+}
+.dropdown-content-show:hover {
+  background-color: #14171A;
+}
+
+</style> 
 
 <script>
   $(document).ready(function () {
@@ -85,7 +134,6 @@
     const sidebarList = document.querySelector(".sidebar__list");
 
     for (let item of sidebarItems) {
-      console.log(item);
       // Creating list item
       const listItem = document.createElement("li");
       listItem.classList.add("my-2");
@@ -127,5 +175,11 @@
 
       sidebarList.insertAdjacentElement("beforeend", listItem);
     }
+
+    $('.dropdown').click(function() {
+      console.log(`${document.querySelector('.dropdown-content').classList}`)
+      $('.dropdown-content').toggleClass('hidden')
+      $('.dropdown-content').toggleClass('dropdown-content-show')
+    })
   });
 </script>

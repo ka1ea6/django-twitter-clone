@@ -1,0 +1,76 @@
+{% extends './base.html' %} 
+{% block title %} 
+Explore / Twitter Clone 
+{% endblock title %}
+{% block content %} 
+<div class="grid grid-cols-12 w-full h-full">
+  <div class="col-span-4">
+  </div>
+  <div class="col-span-8">
+    <div class="grid grid-cols-12 h-full">
+        <div class="col-span-5 border border-[#606060e8] overflow-auto max-h-1/2">
+            {% load static %}
+            <div class="flex flex-col h-full relative">
+                <div class="pl-4 pt-8 pb-16 absolute bg-[#14171ae9] backdrop-blur-sm w-full">
+                    <span class="text-2xl font-medium blur-none">Home</span>
+                </div>
+                <div class="flex flex-col overflow-scroll h-screen">
+                    <div class="flex flex-row border border-[#606060e8] p-16 ">
+                    </div>
+                    <div class="flex flex-row border border-[#606060e8] p-4 ">
+                        <!-- <img src="{% static 'icons/profile.png' %}" width="50" height="50" class="rounded-full h-fit self-start"/>
+                        <div class="flex flex-col pl-2 w-full">
+                            <form action="/post" method="POST" class="flex flex-col">
+                                {% csrf_token %}
+                                <input type="text" name="content" id="" class="bg-[#5d5d5d00] border-none  focus:outline-0 w-full" placeholder="What's hapening?">
+                                <hr class="self-center w-full h-1/4 my-4 border-0.5 border-[#1DA1F2]" />
+                                <button type="submit" class="self-end mt-4 bg-[#1DA1F2] rounded-full px-4 py-2">Tweet</button>
+                            </form>
+            
+                        </div> -->
+                    </div>
+                    {% for post in posts %}
+                    <div class="flex flex-row border border-[#606060e8] p-4 ">
+                        <img src="{% static 'icons/profile.png' %}" width="50" height="50" class="rounded-full h-fit self-start"/>
+                        <div class="flex flex-col pl-2">
+                            <span class="text-lg font-medium">{{post.profile.display_name}} <span class="text-sm text-[#657786]">@{{post.profile.user.username}} . {{post.created_at}}</span> </span>
+                            <span class="text-md">{{post.content}}</span>
+                            <!-- <div class="flex flex-row mt-4 gap-4 self-center">
+                                <span class="flex gap-2"><img src="{% static 'icons/grey-message-48.png' %}" alt="" height="20" width="20"> <span class="text-sm text-[#657786]"> 2</span></span>
+                                <span class="flex gap-2"><img src="{% static 'icons/grey-retweet-48.png' %}" alt="" height="20" width="20"> <span class="text-sm text-[#657786]"> 5</span></span>
+                                <span class="flex gap-2"><img src="{% static 'icons/grey-love-48.png' %}" alt="" height="20" width="20"> <span class="text-sm text-[#657786]"> 5</span></span>
+                            </div> -->
+                        </div>
+                    </div>
+                    {% endfor %}
+            
+                    <div class="flex flex-row border border-[#606060e8] p-16">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-3">
+        </div>
+      </div>
+      
+  </div>
+
+</div>
+<div class="fixed bottom-0 w-full h-16 bg-[#1DA1F2]">
+    <div class="grid grid-cols-12 w-full h-full ">
+        <div class="col-span-4"></div>
+        <div class="col-span-6 flex justify-between p-2">
+            <div class="flex flex-col leading-normal space-y-0">
+                <span class="text-2xl font-bold">Don't miss what is hapening?</span>
+                <span class="text-lg font-thin">People on twitter are the first to know</span>
+            </div>
+            <div class="self-center">
+                <a href="#" class="rounded-full border border-slate-50 text-[#fff] font-medium p-2">Login</a>
+                <a href="#" class="rounded-full bg-[#fff] text-[#000] font-medium p-2">Sign up</a> 
+            </div>
+        </div>
+        <div class="col-span-2"></div>
+    </div>
+</div>
+{% endblock content %}  
+  

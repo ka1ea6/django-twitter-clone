@@ -9,9 +9,10 @@ class MyAdmin(admin.ModelAdmin):
         return False
 
 
-admin.site.register(Profile, MyAdmin)
+admin.site.register(Profile)
 admin.site.register(Comment_Comment)
 admin.site.register(Comment_Likes)
+admin.site.register(Post)
 admin.site.register(Post_Likes)
 admin.site.register(Post_Comment)
 admin.site.register(Follows)

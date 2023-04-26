@@ -1,0 +1,15 @@
+{% extends './base.html' %}
+{% load static %}
+{% block content %}
+<div class="h-full w-full bg-[#34424bbe]  flex items-center justify-center">
+    <div class="flex flex-col bg-[#000] p-8 rounded-xl">
+        <img src="{% static 'icons/white-twitter-50.png' %}" width="40" height="40" alt="" class="self-center mb-4">
+        <span class="text-lg font-bold text-left">Log out of Twitter Clone?</span>
+        <span class="text-sm">You can always log back in at any time</span>
+        <form action="">
+            <button type="submit" class="w-full bg-[#fff] text-[#000] mt-2 rounded-full text-lg font-medium h-10">Logout</button>
+        </form>
+        <a href="home" class="w-full  text-[#fff] border border-slate-50 mt-2 rounded-full text-lg font-medium h-10 text-center">Cancel</a>
+    </div>
+</div>
+{% endblock content %}
