@@ -13,8 +13,11 @@ def index(request):
 
 def home(request):
     posts = Post.objects.all().order_by('-created_at')
+    print(request.user)
+    user = User.objects.filter(id=request.user.id)
 
-    if request.user is not None:
+    if request.user is not None or request.user.username != "AnonymousUser":
+
         profile = Profile.objects.get(user_id=request.user.id)
         return render(request, 'core/home/home.html', context={'posts': posts, 'profile': profile})
 
