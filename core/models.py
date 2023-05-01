@@ -33,6 +33,8 @@ class Post(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, default=None)
     content = models.TextField(max_length=300)
     created_at = models.DateTimeField(default=datetime.now())
+    like_count = models.IntegerField(default=0)
+    comment_count = models.IntegerField(default=0)
 
 class Post_Comment(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, default=None)

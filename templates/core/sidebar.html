@@ -42,14 +42,14 @@
     <div class="self-start flex gap-4  hover:bg-[#252b30b9] p-2 rounded-full w-full relative dropdown">
       <img src="{% static 'icons/profile.png' %}" width="50" height="50" class="rounded-full h-fit self-start"/>
       <div class="flex flex-col">
-        <span>Kalb</span>
-        <span>@kalb</span>
+        <span>{{ profile.display_name }}</span>
+        <span>@{{ profile.user.username }}</span>
       </div>
       <div class="self-start">
         <!-- <img src="{% static 'icons/grey-ellipsis-50.png' %}" width="20" height="20" class="rounded-full h-fit self-start"/> -->
       </div>
       <div class="dropdown-content hidden " >
-        <a href="{% url 'logout' %}" class=" ">Logout @kalb</a>
+        <a href="{% url 'logout' %}" class=" ">Logout @{{ profile.user.username }}</a>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from core.models import Post, User, Profile
+from core.models import Post, User, Profile, Post_Likes
 from django.contrib import auth, messages
 from datetime import datetime
 
@@ -14,7 +14,11 @@ def index(request):
 def home(request):
     posts = Post.objects.all().order_by('-created_at')
 
-    print(request.user)
+    if request.user is not None:
+        profile = Profile.objects.get(user_id=request.user.id)
+        return render(request, 'core/home/home.html', context={'posts': posts, 'profile': profile})
+
+    
     return render(request, 'core/home/home.html', context={'posts': posts})
 
 def post(request):
@@ -84,3 +88,24 @@ def signup(request):
 
 
     return render(request, 'core/signup.html')
+
+def like_post(request):
+    post_id = request.GET.get('post_id')
+    profile = Profile.objects.get(user_id=request.user.id)
+
+    like_filter = Post_Likes.objects.filter(post_id=post_id, profile=profile).first()
+    print(like_filter)
+    if like_filter is None and post_id is not None:
+        new_like = Post_Likes.objects.create(post_id=post_id, profile=profile)
+        post = Post.objects.get(id=post_id)
+        post.like_count += 1
+        new_like.save()
+        post.save()
+    elif like_filter is not None and post_id is not None:
+        like_filter.delete()
+        post = Post.objects.get(id=post_id)
+        post.like_count -= 1
+        post.save()
+    
+
+    return redirect('home')
