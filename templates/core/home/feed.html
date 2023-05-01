@@ -7,12 +7,11 @@
         <div class="flex flex-row border border-[#606060e8] p-16 ">
         </div>
         <div class="flex flex-row border border-[#606060e8] p-4 ">
+            {% if request.user.is_authenticated  %}
             <img src="{% static 'icons/profile.png' %}" width="50" height="50" class="rounded-full h-fit self-start"/>
+            {% endif %}
             <div class="flex flex-col pl-2 w-full">
                 {% if request.user.is_authenticated  %}
-                <script>
-                    console.log('{{request.user.is_authenticated  }}')
-                </script>
                 <form action="/post" method="POST" class="flex flex-col">
                     {% csrf_token %}
                     <input type="text" name="content" id="" class="bg-[#5d5d5d00] border-none  focus:outline-0 w-full" placeholder="What's hapening?">

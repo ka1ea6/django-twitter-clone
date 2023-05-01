@@ -15,6 +15,9 @@ class Profile(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     # email = models.EmailField(blank=True, unique=True, default=None)
 
+    def __str__(self):
+        return self.user.username
+
 
 
 class Follows(models.Model):

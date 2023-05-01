@@ -2,24 +2,20 @@
 {% load static %}
 {% block content %}
 <div class="h-full w-full bg-[#34424bbe]  flex items-center justify-center">
-    <div class="flex flex-col bg-[#000] p-8 rounded-xl w-1/2 lg:w-1/4">
+    <div class="flex flex-col bg-[#000] p-8 rounded-xl lg:w-1/4">
         <img src="{% static 'icons/white-twitter-50.png' %}" width="40" height="40" alt="" class="self-center mb-4">
         <span class="text-2xl text-center font-bold text-left">Sign into twitter clone</span>
         {% for message in messages %}
         <span class="text-red-400">{{ message }}</span>
         {% endfor %}
         <!-- <span class="text-sm">You can always log back in at any time</span> -->
-        <form action="{% url 'signup' %}" method="POST">
+        <form action="{% url 'login' %}" method="POST">
             {% csrf_token %}
-            <label for="username">Username</label>
+            <label for="username"> username</label>
             <input type="text" name="username" class="bg-[#5d5d5d00] text-blue-50 w-full rounded-lg" id="username">
-            <label for="email">Email</label>
-            <input type="email" name="email" class="bg-[#5d5d5d00] text-blue-50 w-full rounded-lg" id="username">
             <label for="password"> Password</label>
             <input type="password" name="password" class="w-full rounded-lg bg-[#5d5d5d00] text-blue-50"  id="password">
-            <label for="confirmPassword">Confirm Password</label>
-            <input type="password" name="confirmPassword" class="w-full rounded-lg bg-[#5d5d5d00] text-blue-50"  id="confirmPassword">
-            <button type="submit" class="w-full bg-[#fff] text-[#000] mt-2 rounded-full text-lg font-medium h-10">Signup</button>
+            <button type="submit" class="w-full bg-[#fff] text-[#000] mt-2 rounded-full text-lg font-medium h-10">Login</button>
         </form>
         <a href="{% url 'home' %}" class="w-full  text-[#fff] border border-slate-50 mt-2 rounded-full text-lg font-medium h-10 text-center">Cancel</a>
     </div>
